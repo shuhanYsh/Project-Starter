@@ -11,6 +11,7 @@ public class Account {
     public String sex;     // the account owner physical sex, male or female
     public String require; // the account owner needs, add or lose weight
     public ArrayList<Food> foodList;
+    public int countCalories;
 
     // EFFECT: set the account on the person's name and assigned id
     public Account(int id, String name) {
@@ -102,5 +103,16 @@ public class Account {
     public ArrayList<Food> getFoodList() {
         return foodList;
     }
+
+    public int countCalories() {
+        int sum = 0;
+        for (Food i : foodList) {
+            int calories = i.getCalories();
+            sum = sum + calories;
+        }
+        return sum;
+    }
+
+
 
 }

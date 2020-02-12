@@ -3,15 +3,21 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AccountTest {
     private Account testAccount;
+    Food testFood1;
+    Food testFood2;
 
     @BeforeEach
     void runBefore() {
         testAccount = new Account(007, "wjp");
-
+        testFood1 = new Food("food1",100);
+        testFood2 = new Food("food2", 250);
     }
 
     @Test
@@ -93,17 +99,33 @@ class AccountTest {
 
     @Test
     void testAddFood() {
-        Food testFood1 = new Food("food1",100);
         testAccount.addFood(testFood1);
         assertEquals(testFood1, testAccount.getFoodList().get(0));
     }
 
     @Test
     void testRemoveFood() {
-        Food testFood1 = new Food("food1",100);
         testAccount.addFood(testFood1);
         testAccount.addFood(testFood1);
         testAccount.removeFood(testFood1);
         assertEquals(1, testAccount.getFoodList().size());
+    }
+
+    @Test
+    void testGetFoodList() {
+        testAccount.getFoodList().isEmpty();
+        testAccount.addFood(testFood1);
+        ArrayList testList = new ArrayList();
+        testList.add(testFood1);
+        assertEquals(testList, testAccount.getFoodList());
+    }
+
+
+
+    @Test
+    void testCountCalories() {
+        testAccount.addFood(testFood1);
+        testAccount.addFood(testFood2);
+        assertEquals(350, testAccount.countCalories());
     }
 }
