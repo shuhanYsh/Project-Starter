@@ -10,14 +10,44 @@ class AccountTest {
 
     @BeforeEach
     void runBefore() {
-        testAccount = new Account(007, "wjp", "male", 65, 175, "add");
+        testAccount = new Account(007, "wjp");
 
     }
 
     @Test
     void testConstructor(){
-        testAccount = new Account(007, "wjp", "male", 65, 175, "add");
+        testAccount = new Account(007, "wjp");
 
+    }
+
+    @Test
+    void testSetAge(){
+        testAccount.setAge(20);
+        assertEquals(20, testAccount.getAge());
+    }
+
+    @Test
+    void testSetSex(){
+        testAccount.setSex("male");
+        assertEquals("male", testAccount.getSex());
+    }
+
+    @Test
+    void testSetWeight(){
+        testAccount.setWeight(65.0);
+        assertEquals(65.0, testAccount.getWeight());
+    }
+
+    @Test
+    void testSetHeight(){
+        testAccount.setHeight(175.5);
+        assertEquals(175.5, testAccount.getHeight());
+    }
+
+    @Test
+    void testSetRequire(){
+        testAccount.setRequire("add");
+        assertEquals("add", testAccount.getRequire());
     }
 
     @Test
@@ -31,22 +61,32 @@ class AccountTest {
     }
 
     @Test
+    void testGetAge(){
+        testAccount.setAge(20);
+        assertEquals(20, testAccount.getAge());
+    }
+
+    @Test
     void testGetSex(){
+        testAccount.setSex("male");
         assertEquals("male", testAccount.getSex());
     }
 
     @Test
     void testGetWeight(){
-        assertEquals(65, testAccount.getWeight());
+        testAccount.setWeight(65.0);
+        assertEquals(65.0, testAccount.getWeight());
     }
 
     @Test
     void testGetHeight(){
-        assertEquals(175, testAccount.getHeight());
+        testAccount.setHeight(175.5);
+        assertEquals(175.5, testAccount.getHeight());
     }
 
     @Test
     void testGetRequire(){
+        testAccount.setRequire("add");
         assertEquals("add", testAccount.getRequire());
 
     }

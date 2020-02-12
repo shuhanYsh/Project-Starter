@@ -17,8 +17,7 @@ people like me!
 
 ## User Stories
 
-As a user, I want to be able to add my personal information to account.
-As a user, I want to be able to view a list persons' name and their needs in my account.  
-As a user, I want to be able to calculate daily calories based on basic consumption, intake calories and consumed calories.  
-As a user, I want to be able to take a reminder when daily calories are excess or below the requirement, based on the 
-person's personal needs-- lose weight or gain weight. 
+As a user, I want to be able to add my personal information to account.  
+As a user, I want to be able to view personal information in the account.  
+As a user, I want to be able to add food in food list of each account.  
+As a user, I want to be able to get and set food information.  

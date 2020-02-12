@@ -3,7 +3,7 @@ package model;
 public class Food {
     public String name;  // food name
     public int calories; // food calories in 100g per kcal
-    public int quality;  // food quality in gram
+
 
     // REQUIRES: calories as positive int
     // MODIFIES: this

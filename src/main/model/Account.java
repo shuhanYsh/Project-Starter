@@ -12,17 +12,49 @@ public class Account {
     public String require; // the account owner needs, add or lose weight
     public ArrayList<Food> foodList;
 
-    // EFFECT: set the account based on the person's name, sex, weight,height, and require, and assigned id
-    public Account(int id, String name,String sex, double weight, double height, String require) {
+    // EFFECT: set the account on the person's name and assigned id
+    public Account(int id, String name) {
         this.id = id;
         this.name = name;
-        this.sex = sex;
-        this.weight = weight;
-        this.height = height;
-        this.require = require;
+        this.age = 0;
+        this.sex = "";
+        this.weight = 0.0;
+        this.height = 0.0;
+        this.require = "";
         foodList = new ArrayList<>();
 
     }
+
+    // REQUIRES: given age as positive int
+    // EFFECT: set the person's age
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // REQUIRES: given sex in male or female
+    // EFFECT: set the person's sex
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    // REQUIRES: given weight as positive double in kg
+    // EFFECT: set the person's weight
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    // REQUIRES: given height as positive double in cm
+    // EFFECT: set the person's height
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    // REQUIRES: given string in add or lose
+    // EFFECT: set the person's requirement
+    public void setRequire(String require) {
+        this.require = require;
+    }
+
 
     // EFFECT: return account id
     public int getId() {
@@ -32,6 +64,11 @@ public class Account {
     // EFFECT: return account owner name
     public String getName() {
         return name;
+    }
+
+    // EFFECT: return account owner name
+    public int getAge() {
+        return age;
     }
 
     // EFFECT: return account owner sex
