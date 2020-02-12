@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Account {
     public int id;         // the account id
     public int age;        // the account owner age
@@ -8,6 +10,7 @@ public class Account {
     public String name;    // the account owner name
     public String sex;     // the account owner physical sex, male or female
     public String require; // the account owner needs, add or lose weight
+    public ArrayList<Food> foodList;
 
     // EFFECT: set the account based on the person's name, sex, weight,height, and require, and assigned id
     public Account(int id, String name,String sex, double weight, double height, String require) {
@@ -17,6 +20,8 @@ public class Account {
         this.weight = weight;
         this.height = height;
         this.require = require;
+        foodList = new ArrayList<>();
+
     }
 
     // EFFECT: return account id
@@ -47,6 +52,18 @@ public class Account {
     // EFFECT: return account owner needs
     public String getRequire() {
         return require;
+    }
+
+    public void addFood(Food f) {
+        foodList.add(f);
+    }
+
+    public void removeFood(Food f) {
+        foodList.remove(f);
+    }
+
+    public ArrayList<Food> getFoodList() {
+        return foodList;
     }
 
 }

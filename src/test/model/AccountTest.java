@@ -50,4 +50,20 @@ class AccountTest {
         assertEquals("add", testAccount.getRequire());
 
     }
+
+    @Test
+    void testAddFood() {
+        Food testFood1 = new Food("food1",100);
+        testAccount.addFood(testFood1);
+        assertEquals(testFood1, testAccount.getFoodList().get(0));
+    }
+
+    @Test
+    void testRemoveFood() {
+        Food testFood1 = new Food("food1",100);
+        testAccount.addFood(testFood1);
+        testAccount.addFood(testFood1);
+        testAccount.removeFood(testFood1);
+        assertEquals(1, testAccount.getFoodList().size());
+    }
 }
