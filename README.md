@@ -18,8 +18,8 @@ people like me!
 ## User Stories
 
 As a user, I want to be able to build my account.  
-As a user, I want to be able to add my personal information to data of account
-As a user, I want to be able to add food in food list to my account.  
-As a user, I want to be able to set and get food information. 
+As a user, I want to be able to add my personal information to data of account.  
+As a user, I want to be able to add food in food list of my account.  
+As a user, I want to be able to set and get food information.  
 As a user, I want to be able to save my personal information to a file  
 As a user, I want to be able to optionally load  my information from data file and print that when the program starts
