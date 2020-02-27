@@ -105,6 +105,7 @@ public class Account  {
         }
     }
 
+    // EFFECTS: returns the data for the account
     public Data getData() {
         return accountData;
     }

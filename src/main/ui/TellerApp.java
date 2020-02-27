@@ -35,9 +35,6 @@ public class TellerApp {
         //System.out.println(stringToJson().get("age"));
         loadData();
 
-
-        //loadAccounts();
-
         while (keepGoing) {
             displayMenu();
             command = input.nextLine();
@@ -52,20 +49,8 @@ public class TellerApp {
 
         System.out.println("\nGoodbye!");
     }
-    // MODIFIES: this
-    // EFFECTS: loads accounts from ACCOUNTS_FILE, if that file exists;
-    // otherwise initializes accounts with default values
 
-//    private void loadAccounts() {
-//        try {
-//            List<AccountManage> accountManage = Reader.readAccounts(new File(ACCOUNTS_FILE));
-//            vip = accountManage.get(0);
-//        } catch (IOException e) {
-//            init();
-//        }
-//    }
-
-
+    // EFFECTS: return the newest information in file
     public String getDataFromFile(String fileName) {
         String path = "./data/" + fileName + ".json";
         BufferedReader reader = null;
@@ -93,6 +78,7 @@ public class TellerApp {
         return lastString;
     }
 
+    // EFFECTS: turn string to json
     public JSONObject stringToJson() {
         String stringData = getDataFromFile("accountData");
         if (stringData == null || stringData.isEmpty()) {
@@ -102,6 +88,8 @@ public class TellerApp {
         return jsonData;
     }
 
+
+    // EFFECTS: loads data from json and set to accountData in accountMange
     public void loadData() {
         JSONObject json = stringToJson();
         if (json == null) {
@@ -120,23 +108,7 @@ public class TellerApp {
 
     }
 
-
-    // EFFECTS: saves state of owner's accounts to ACCOUNTS_FILE
-//    private void saveAccounts() {
-//        try {
-//            Writer writer = new Writer(new File(ACCOUNTS_FILE));
-//            writer.write(vip);
-//            writer.close();
-//            System.out.println("Accounts saved to file " + ACCOUNTS_FILE);
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Unable to save accounts to " + ACCOUNTS_FILE);
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//            // this is due to a programming error
-//        }
-//    }
-
-
+    // EFFECTS: save data to file
     public void saveDataToFile(String fileName, String data) {
         BufferedWriter writer = null;
         File file = new File("./data/" + fileName + ".json");
@@ -159,6 +131,7 @@ public class TellerApp {
         System.out.println("Saved done !");
     }
 
+    // EFFECTS: check if file exists, if not create new file
     private void checkFile(File file) {
         if (!file.exists()) {
             try {
@@ -232,7 +205,7 @@ public class TellerApp {
         System.out.println("calculate intakeCalories :");
         System.out.println(vip.countIntakeCalories());
         System.out.println("total calories :");
-        System.out.println(vip.totalCalories());
+        System.out.println(vip.dailyCalories());
     }
 
     // EFFECTS: prompts user to select an account and prints account to screen

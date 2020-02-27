@@ -1,6 +1,7 @@
 package model;
 
 
+import exception.InvalidInputException;
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
@@ -12,6 +13,8 @@ public class AccountManage extends Account {
 
     }
 
+    //REQUIRES: sex have to be string "f" or "m"
+    //EFFECTS: calculate basalMetabolism based on personal information
     public double basalMetabolism() {
         if (sex == "f") {
             double bmf = 9.6 * accountData.getWeight() + 1.8 * accountData.getHeight()
@@ -24,6 +27,7 @@ public class AccountManage extends Account {
         }
     }
 
+    //EFFECTS: calculate food intake calories
     public double countIntakeCalories() {
         double sum = 0;
         for (FoodIntake i : foodIntakeArrayList) {
@@ -35,10 +39,12 @@ public class AccountManage extends Account {
         return sum;
     }
 
-    public double totalCalories() {
+    //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
+    public double dailyCalories() {
         return countIntakeCalories() - basalMetabolism();
     }
 
+    //EFFECTS: modify data in json to string
     public String jsonToString() {
         JSONObject obj = new JSONObject();
         obj.put("age", accountData.getAge());
@@ -50,6 +56,7 @@ public class AccountManage extends Account {
         return data1;
     }
 
+    //EFFECTS: set data to accountData
     public void setData(Data data) {
         accountData = data;
     }

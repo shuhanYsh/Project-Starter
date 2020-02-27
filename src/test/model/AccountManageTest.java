@@ -1,6 +1,5 @@
 package model;
 
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -48,7 +47,7 @@ public class AccountManageTest {
 
     @Test
     void testTotalCal() {
-        assertEquals(-1145.5, testAccountManage.totalCalories());
+        assertEquals(-1145.5, testAccountManage.dailyCalories());
     }
 
     @Test
