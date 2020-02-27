@@ -17,7 +17,7 @@ people like me!
 
 ## User Stories
 
-As a user, I want to be able to add my personal information to account.  
-As a user, I want to be able to view personal information in the account.  
+As a user, I want to be able to build my account.  
+As a user, I want to be able to add my personal information in zaccount
 As a user, I want to be able to add food in food list of each account.  
 As a user, I want to be able to get and set food information.  

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountManageTest {
     private AccountManage testAccountManage;
+    private AccountManage testAccountManage2;
 
 
     @BeforeEach
@@ -31,6 +32,13 @@ public class AccountManageTest {
     @Test
     void testBasalMetabolism(){
         assertEquals(1695.5,testAccountManage.basalMetabolism());
+        testAccountManage2 = new AccountManage("ysh", "f");
+        testAccountManage2.getData().setAge(19);
+        testAccountManage2.getData().setHeight(160);
+        testAccountManage2.getData().setWeight(53);
+        testAccountManage2.getData().setRequire("lose");
+        assertEquals(1362.5,testAccountManage2.basalMetabolism());
+
     }
 
     @Test
