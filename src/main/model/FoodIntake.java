@@ -29,6 +29,4 @@ public class FoodIntake {
     public void addQuantity(int amount) {
         this.quantity += amount;
     }
-
-
 }
