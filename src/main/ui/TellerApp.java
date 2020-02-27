@@ -152,7 +152,7 @@ public class TellerApp {
         } else if (command.equals("c")) {
             calculateCalories();
         } else if (command.equals("s")) {
-            saveDataToFile("data",vip.jsonToString());
+            saveDataToFile("accountData",vip.jsonToString());
         } else if (command.equals("p")) {
             printAccount();
         }  else {

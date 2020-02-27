@@ -1,7 +1,7 @@
 package model;
 
 
-import exception.InvalidInputException;
+
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
