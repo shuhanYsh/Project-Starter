@@ -52,6 +52,7 @@ class AccountTest {
 
     @Test
     void testGetTotalQuantityOfFood()  {
+        assertEquals(0, testAccount.getTotalQuantityOfFood(testFood1));
         testAccount.addFood(testFood1,100);
         testAccount.addFood(testFood2,100);
         assertEquals(100, testAccount.getTotalQuantityOfFood(testFood1));

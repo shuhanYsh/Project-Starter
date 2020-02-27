@@ -14,9 +14,10 @@ import static java.lang.Integer.parseInt;
 
 // Calculator teller application
 public class TellerApp {
-    private static final String ACCOUNTS_FILE = "./data/accounts.txt";
+//    private static final String ACCOUNTS_FILE = "./data/accounts.txt";
     private Scanner input;
     private AccountManage vip;
+
 
     // EFFECTS: runs the teller application
     public TellerApp() throws FileNotFoundException {
@@ -30,7 +31,7 @@ public class TellerApp {
         String command = null;
         input = new Scanner(System.in);
         init();
-        getDataFromFile("data");
+        getDataFromFile("accountData");
         //System.out.println(stringToJson().get("age"));
         loadData();
 
@@ -64,17 +65,17 @@ public class TellerApp {
 //        }
 //    }
 
-    public String getDataFromFile(String fileName) {
 
+    public String getDataFromFile(String fileName) {
         String path = "./data/" + fileName + ".json";
         BufferedReader reader = null;
-        String laststr = "";
+        String lastString = "";
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path), "UTF-8");
             reader = new BufferedReader(inputStreamReader);
             String tempString = null;
             while ((tempString = reader.readLine()) != null) {
-                laststr += tempString;
+                lastString += tempString;
             }
             reader.close();
         } catch (IOException e) {
@@ -88,12 +89,12 @@ public class TellerApp {
                 }
             }
         }
-        //System.out.println(laststr);
-        return laststr;
+        //System.out.println(lastString);
+        return lastString;
     }
 
     public JSONObject stringToJson() {
-        String stringData = getDataFromFile("data");
+        String stringData = getDataFromFile("accountData");
         if (stringData == null || stringData.isEmpty()) {
             return null;
         }
