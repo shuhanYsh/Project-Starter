@@ -66,12 +66,11 @@ public class TellerApp {
 
     public String getDataFromFile(String fileName) {
 
-        String path = "d:\\" + fileName + ".json";
+        String path = "./data/" + fileName + ".json";
         BufferedReader reader = null;
         String laststr = "";
         try {
-            FileInputStream fileInputStream = new FileInputStream(path);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(path), "UTF-8");
             reader = new BufferedReader(inputStreamReader);
             String tempString = null;
             while ((tempString = reader.readLine()) != null) {
@@ -95,15 +94,22 @@ public class TellerApp {
 
     public JSONObject stringToJson() {
         String stringData = getDataFromFile("data");
+        if (stringData == null || stringData.isEmpty()) {
+            return null;
+        }
         JSONObject jsonData = new JSONObject(stringData);
         return jsonData;
     }
 
     public void loadData() {
-        Integer age = stringToJson().getInt("age");
-        int height = stringToJson().getInt("height");
-        int weight = stringToJson().getInt("weight");
-        String needs = stringToJson().getString("needs");
+        JSONObject json = stringToJson();
+        if (json == null) {
+            return;
+        }
+        int age = json.getInt("age");
+        int height = json.getInt("height");
+        int weight = json.getInt("weight");
+        String needs = json.getString("needs");
         Data data = new Data();
         data.setAge(age);
         data.setHeight(height);
@@ -132,14 +138,8 @@ public class TellerApp {
 
     public void saveDataToFile(String fileName, String data) {
         BufferedWriter writer = null;
-        File file = new File("d:\\" + fileName + ".json");
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        File file = new File("./data/" + fileName + ".json");
+        checkFile(file);
         try {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,false),
                     "UTF-8"));
@@ -156,6 +156,16 @@ public class TellerApp {
             }
         }
         System.out.println("Saved done !");
+    }
+
+    private void checkFile(File file) {
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // MODIFIES: this
