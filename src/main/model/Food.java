@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Food {
     public String name;  // food name
     public int calories; // food calories in 100g per kcal
@@ -35,5 +37,7 @@ public class Food {
     public void setCalories(int calories) {
         this.calories = calories;
     }
+
+
 
 }
