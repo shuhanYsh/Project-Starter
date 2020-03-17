@@ -1,5 +1,6 @@
 package model;
 
+import exception.InvalidInformationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +14,14 @@ class AccountTest {
     Food testFood2;
 
     @BeforeEach
-    void runBefore() {
+    void runBefore() throws InvalidInformationException {
         testAccount = new Account( "wjp", "m");
         testFood1 = new Food("food1",100);
         testFood2 = new Food("food2", 250);
     }
 
     @Test
-    void testConstructor(){
+    void testConstructor() throws InvalidInformationException {
         testAccount = new Account( "wjp", "m");
     }
 
@@ -32,7 +33,7 @@ class AccountTest {
 
 
     @Test
-    void testGetSex(){
+    void testGetSex() throws InvalidInformationException {
         assertEquals("m", testAccount.getSex());
     }
 

@@ -1,5 +1,6 @@
 package ui;
 
+import exception.InvalidInformationException;
 import model.AccountManage;
 import model.Data;
 import model.Food;
@@ -20,13 +21,13 @@ public class TellerApp {
 
 
     // EFFECTS: runs the teller application
-    public TellerApp() throws FileNotFoundException {
+    public TellerApp() throws FileNotFoundException, InvalidInformationException {
         runTeller();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runTeller() throws FileNotFoundException {
+    private void runTeller() throws FileNotFoundException, InvalidInformationException {
         boolean keepGoing = true;
         String command = null;
         input = new Scanner(System.in);
@@ -105,7 +106,6 @@ public class TellerApp {
         data.setWeight(weight);
         data.setRequire(needs);
         vip.setData(data);
-
     }
 
     // EFFECTS: save data to file
@@ -144,7 +144,7 @@ public class TellerApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processCommand(String command) throws FileNotFoundException {
+    private void processCommand(String command) throws FileNotFoundException, InvalidInformationException {
         if (command.equals("d")) {
             modifyData();
         } else if (command.equals("i")) {
@@ -173,7 +173,7 @@ public class TellerApp {
 
     // MODIFIES: this
     // EFFECTS: initializes accounts
-    private void init() {
+    private void init() throws InvalidInformationException {
         vip = new AccountManage("", "");
     }
 
@@ -199,7 +199,7 @@ public class TellerApp {
         vip.addFood(newFood, parseInt(input.nextLine()));
     }
 
-    private void calculateCalories() {
+    private void calculateCalories() throws InvalidInformationException {
         System.out.println("calculate basalMetabolism :");
         System.out.println(vip.basalMetabolism());
         System.out.println("calculate intakeCalories :");
@@ -209,7 +209,7 @@ public class TellerApp {
     }
 
     // EFFECTS: prompts user to select an account and prints account to screen
-    private void printAccount() {
+    private void printAccount() throws InvalidInformationException {
         System.out.println("Account holder: " + vip.getName() + "\n");
         System.out.println("Account holder's sex: " + vip.getSex());
         System.out.println(("Account holder's age:" + vip.getData().getAge()));

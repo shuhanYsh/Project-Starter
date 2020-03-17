@@ -2,12 +2,15 @@ package model;
 
 
 
+import exception.InvalidInformationException;
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 public class AccountManage extends Account {
 
-    public AccountManage(String name, String sex) {
+    public AccountManage(String name, String sex) throws InvalidInformationException {
         super(name, sex);
 
 
@@ -15,15 +18,15 @@ public class AccountManage extends Account {
 
     //REQUIRES: sex have to be string "f" or "m"
     //EFFECTS: calculate basalMetabolism based on personal information
-    public double basalMetabolism() {
-        if (sex == "f") {
-            double bmf = 9.6 * accountData.getWeight() + 1.8 * accountData.getHeight()
+    public double basalMetabolism() throws InvalidInformationException {
+        if (sex.equals("f")) {
+            return 9.6 * accountData.getWeight() + 1.8 * accountData.getHeight()
                     - 4.7 * accountData.getAge() + 655;
-            return bmf;
-        } else {
-            double bmm = 13.7 * accountData.getWeight() + 5 * accountData.getHeight()
+        } else if (sex.equals("m")) {
+            return 13.7 * accountData.getWeight() + 5 * accountData.getHeight()
                     - 6.8 * accountData.getAge() + 66;
-            return bmm;
+        } else {
+            throw new InvalidInformationException("Invalid Sex!");
         }
     }
 
@@ -40,7 +43,7 @@ public class AccountManage extends Account {
     }
 
     //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
-    public double dailyCalories() {
+    public double dailyCalories() throws InvalidInformationException {
         return countIntakeCalories() - basalMetabolism();
     }
 

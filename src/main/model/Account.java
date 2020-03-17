@@ -1,6 +1,8 @@
 package model;
 
 
+import exception.InvalidInformationException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class Account  {
      *          positive integer not assigned to any other account;
      *          sex of the account owner is set to accountSex
      */
-    public Account(String accountName, String accountSex) {
+    public Account(String accountName, String accountSex) throws InvalidInformationException {
 //        id = nextAccountId++;
         name = accountName;
         sex = accountSex;
@@ -57,9 +59,15 @@ public class Account  {
 
 
     // EFFECT: return account owner sex
-    public String getSex() {
-        return sex;
+    public String getSex() throws InvalidInformationException {
+        if (sex.equals("f") || sex.equals("m")) {
+            return sex;
+        } else {
+            throw new InvalidInformationException("Invalid Sex !");
+        }
+
     }
+
 
 //    public void addFood(Food f) {
 //        foodList.add(f);
