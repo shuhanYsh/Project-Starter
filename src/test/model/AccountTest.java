@@ -16,7 +16,6 @@ class AccountTest {
 
     @BeforeEach
     void runBefore() throws InvalidInformationException {
-        testAccount = new Account( "wjp", "m");
         testFood1 = new Food("food1",100);
         testFood2 = new Food("food2", 250);
     }
@@ -28,13 +27,24 @@ class AccountTest {
 
 
     @Test
+    void testNotGetName(){
+        Account testAccount = new Account( "", "m");
+        try {
+            assertEquals("Please insert your name!", testAccount.getName());
+            fail("should throw this exception!");
+        } catch (NullPointerException e) {
+
+        }
+    }
+
+    @Test
     void testGetName(){
+        Account testAccount = new Account( "wjp", "m");
         try {
             assertEquals("wjp", testAccount.getName());
         } catch (NullPointerException e) {
             fail("should not throw this exception!");
         }
-
     }
 
 
