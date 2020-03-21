@@ -21,13 +21,13 @@ public class TellerApp {
 
 
     // EFFECTS: runs the teller application
-    public TellerApp() throws FileNotFoundException, InvalidInformationException {
+    public TellerApp() throws IOException, InvalidInformationException {
         runTeller();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runTeller() throws FileNotFoundException, InvalidInformationException {
+    private void runTeller() throws IOException, InvalidInformationException {
         boolean keepGoing = true;
         String command = null;
         input = new Scanner(System.in);
@@ -144,7 +144,7 @@ public class TellerApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processCommand(String command) throws FileNotFoundException, InvalidInformationException {
+    private void processCommand(String command) throws IOException, InvalidInformationException {
         if (command.equals("d")) {
             modifyData();
         } else if (command.equals("i")) {
@@ -199,7 +199,7 @@ public class TellerApp {
         vip.addFood(newFood, parseInt(input.nextLine()));
     }
 
-    private void calculateCalories() throws InvalidInformationException {
+    private void calculateCalories() throws InvalidInformationException, IOException {
         System.out.println("calculate basalMetabolism :");
         System.out.println(vip.basalMetabolism());
         System.out.println("calculate intakeCalories :");

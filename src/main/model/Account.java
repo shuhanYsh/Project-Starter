@@ -22,7 +22,7 @@ public class Account  {
      *          positive integer not assigned to any other account;
      *          sex of the account owner is set to accountSex
      */
-    public Account(String accountName, String accountSex) throws InvalidInformationException {
+    public Account(String accountName, String accountSex) {
 //        id = nextAccountId++;
         name = accountName;
         sex = accountSex;
@@ -54,7 +54,11 @@ public class Account  {
 
     // EFFECT: return account owner name
     public String getName() {
-        return name;
+        if (name != null && !"".equals(name)) {
+            return name;
+        } else {
+            throw new NullPointerException("Please insert your name!");
+        }
     }
 
 

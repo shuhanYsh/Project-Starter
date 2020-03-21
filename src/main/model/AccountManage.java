@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class AccountManage extends Account {
 
-    public AccountManage(String name, String sex) throws InvalidInformationException {
+    public AccountManage(String name, String sex) {
         super(name, sex);
 
 
@@ -18,7 +18,7 @@ public class AccountManage extends Account {
 
     //REQUIRES: sex have to be string "f" or "m"
     //EFFECTS: calculate basalMetabolism based on personal information
-    public double basalMetabolism() throws InvalidInformationException {
+    public double basalMetabolism() throws IOException {
         if (sex.equals("f")) {
             return 9.6 * accountData.getWeight() + 1.8 * accountData.getHeight()
                     - 4.7 * accountData.getAge() + 655;
@@ -26,7 +26,7 @@ public class AccountManage extends Account {
             return 13.7 * accountData.getWeight() + 5 * accountData.getHeight()
                     - 6.8 * accountData.getAge() + 66;
         } else {
-            throw new InvalidInformationException("Invalid Sex!");
+            throw new IOException("Invalid Sex!");
         }
     }
 
@@ -43,7 +43,7 @@ public class AccountManage extends Account {
     }
 
     //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
-    public double dailyCalories() throws InvalidInformationException {
+    public double dailyCalories() throws IOException {
         return countIntakeCalories() - basalMetabolism();
     }
 
