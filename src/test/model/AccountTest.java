@@ -16,6 +16,7 @@ class AccountTest {
 
     @BeforeEach
     void runBefore() throws InvalidInformationException {
+        testAccount = new Account("wjp", "m");
         testFood1 = new Food("food1",100);
         testFood2 = new Food("food2", 250);
     }
@@ -28,9 +29,9 @@ class AccountTest {
 
     @Test
     void testNotGetName(){
-        Account testAccount = new Account( "", "m");
+        Account testAccount1 = new Account( "", "m");
         try {
-            assertEquals("Please insert your name!", testAccount.getName());
+            assertEquals("Please insert your name!", testAccount1.getName());
             fail("should throw this exception!");
         } catch (NullPointerException e) {
 
@@ -39,18 +40,33 @@ class AccountTest {
 
     @Test
     void testGetName(){
-        Account testAccount = new Account( "wjp", "m");
+        Account testAccount1 = new Account( "wjp", "m");
         try {
-            assertEquals("wjp", testAccount.getName());
+            assertEquals("wjp", testAccount1.getName());
         } catch (NullPointerException e) {
             fail("should not throw this exception!");
         }
     }
 
+    @Test
+    void testGetInvalidSex() {
+        Account testAccount2 = new Account( "wjp", "s");
+        try{
+            assertEquals("Invalid Sex !", testAccount2.getSex());
+            fail("should throw this exception!");
+        } catch (InvalidInformationException e){
+
+        }
+    }
 
     @Test
-    void testGetSex() throws InvalidInformationException {
-        assertEquals("m", testAccount.getSex());
+    void testGetSex() {
+        Account testAccount2 = new Account( "wjp", "m");
+        try{
+            assertEquals("m", testAccount2.getSex());
+        } catch (InvalidInformationException e){
+            fail("should not throw this exception!");
+        }
     }
 
 
