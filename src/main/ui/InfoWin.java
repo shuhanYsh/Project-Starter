@@ -8,7 +8,6 @@ public class InfoWin {
 
         JOptionPane.showMessageDialog(null, message);
     }
-
-
+    
 }
 
