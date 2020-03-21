@@ -105,10 +105,12 @@ public class Main extends JFrame implements ActionListener {
 
 
 
-    public void operationFirstPerformed(String operation) throws InvalidInformationException {
+    public void operationFirstPerformed(String operation) {
         try {
             win2();
             new InfoWin().infoWin(" Your Name is " + vip.getName() + "\n" + "Your Sex is " + vip.getSex());
+        } catch (NullPointerException e) {
+            new InfoWin().infoWin("Please fill out the information!");
         } catch (InvalidInformationException e) {
             new InfoWin().infoWin("Invalid Sex! Please try again !");
         }
@@ -238,8 +240,6 @@ public class Main extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
-
-
 
 
 

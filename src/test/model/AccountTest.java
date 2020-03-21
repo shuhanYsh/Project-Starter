@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class AccountTest {
     private Account testAccount;
@@ -21,14 +22,19 @@ class AccountTest {
     }
 
     @Test
-    void testConstructor() throws InvalidInformationException {
+    void testConstructor() {
         testAccount = new Account( "wjp", "m");
     }
 
 
     @Test
     void testGetName(){
-        assertEquals("wjp", testAccount.getName());
+        try {
+            assertEquals("wjp", testAccount.getName());
+        } catch (NullPointerException e) {
+            fail("should not throw this exception!");
+        }
+
     }
 
 

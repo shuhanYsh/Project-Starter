@@ -53,7 +53,7 @@ public class Account  {
 //    }
 
     // EFFECT: return account owner name
-    public String getName() {
+    public String getName() throws NullPointerException {
         if (name != null && !"".equals(name)) {
             return name;
         } else {
