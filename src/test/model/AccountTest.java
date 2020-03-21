@@ -28,8 +28,19 @@ class AccountTest {
 
 
     @Test
-    void testNotGetName(){
+    void testGetEmptyName(){
         Account testAccount1 = new Account( "", "m");
+        try {
+            assertEquals("Please insert your name!", testAccount1.getName());
+            fail("should throw this exception!");
+        } catch (NullPointerException e) {
+
+        }
+    }
+
+    @Test
+    void testGetNullName(){
+        Account testAccount1 = new Account( null, "m");
         try {
             assertEquals("Please insert your name!", testAccount1.getName());
             fail("should throw this exception!");
@@ -60,10 +71,20 @@ class AccountTest {
     }
 
     @Test
-    void testGetSex() {
+    void testGetSexMale() {
         Account testAccount2 = new Account( "wjp", "m");
         try{
             assertEquals("m", testAccount2.getSex());
+        } catch (InvalidInformationException e){
+            fail("should not throw this exception!");
+        }
+    }
+
+    @Test
+    void testGetSexFemale() {
+        Account testAccount2 = new Account( "ysh", "f");
+        try{
+            assertEquals("f", testAccount2.getSex());
         } catch (InvalidInformationException e){
             fail("should not throw this exception!");
         }

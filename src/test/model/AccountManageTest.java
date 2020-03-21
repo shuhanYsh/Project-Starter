@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class AccountManageTest {
     private AccountManage testAccountManage;
-    private AccountManage testAccountManage2;
 
 
     @BeforeEach
@@ -32,15 +32,41 @@ public class AccountManageTest {
     }
 
     @Test
-    void testBasalMetabolism() throws IOException {
-        assertEquals(1695.5,testAccountManage.basalMetabolism());
-        testAccountManage2 = new AccountManage("ysh", "f");
-        testAccountManage2.getData().setAge(19);
-        testAccountManage2.getData().setHeight(160);
-        testAccountManage2.getData().setWeight(53);
-        testAccountManage2.getData().setRequire("lose");
-        assertEquals(1362.5,testAccountManage2.basalMetabolism());
+    void testMaleBasalMetabolism()  {
+        try{
+            assertEquals(1695.5,testAccountManage.basalMetabolism());
+        } catch (IOException e){
+            fail("should not throw this exception!");
+        }
+    }
 
+    @Test
+    void testFemaleBasalMetabolism(){
+        try{
+            AccountManage testAccountManage2 = new AccountManage("ysh", "f");
+            testAccountManage2.getData().setAge(19);
+            testAccountManage2.getData().setHeight(160);
+            testAccountManage2.getData().setWeight(53);
+            testAccountManage2.getData().setRequire("lose");
+            assertEquals(1362.5, testAccountManage2.basalMetabolism());
+        } catch (IOException e){
+            fail("should not throw this exception!");
+        }
+    }
+
+    @Test
+    void testInvalidSexBasalMetabolism(){
+        try{
+            AccountManage testAccountManage2 = new AccountManage("ysh", "s");
+            testAccountManage2.getData().setAge(19);
+            testAccountManage2.getData().setHeight(160);
+            testAccountManage2.getData().setWeight(53);
+            testAccountManage2.getData().setRequire("lose");
+            assertEquals("Invalid Sex!", testAccountManage2.basalMetabolism());
+            fail("should throw this exception!");
+        } catch (IOException e){
+
+        }
     }
 
     @Test

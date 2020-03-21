@@ -24,6 +24,7 @@ public class DataTest {
         assertEquals(20 , testData.getAge());
     }
 
+
     @Test
     void testSetHeight() {
         testData.setHeight(175);
