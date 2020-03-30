@@ -1,6 +1,6 @@
 package ui;
 
-import com.sun.org.apache.xpath.internal.operations.Operation;
+
 import exception.InvalidInformationException;
 
 import javax.swing.JButton;
@@ -19,8 +19,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.Scanner;
 
+
+/*
+ * Represents the main window for calories calculator
+ *
+ */
+@SuppressWarnings("serial")
 public class Main extends JFrame implements ActionListener {
     private JTextField nameField;
     private JTextField sexField;
@@ -34,8 +39,8 @@ public class Main extends JFrame implements ActionListener {
     private JTextArea jta;
 
 
-
-
+    // EFFECTS: display the main window which is
+    // the login in page
     public Main() {
         super("The Calories Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -55,6 +60,7 @@ public class Main extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // EFFECTS: add labels and text field on panel1
     private void addOnPanel1(JPanel panel1, JButton btn) {
         JLabel nameLabel = new JLabel("Username:");
         //nameLabel.setBounds(10,20,80,25);
@@ -71,7 +77,9 @@ public class Main extends JFrame implements ActionListener {
         panel1.add(btn);
     }
 
-
+    // MODIFIES: this
+    // EFFECTS:  set an account with name and sex get from fields
+    //           and collect information for account data from the second window
     public void setAccount() throws InvalidInformationException {
         String accountName = nameField.getText();
         String accountHolderSex = sexField.getText();
@@ -84,19 +92,15 @@ public class Main extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getActionCommand().equals("myLogin")) {
-                operation = "login";
                 setAccount();
-                operationFirstPerformed(operation);
+                operationFirstPerformed();
                 playMusic();
             } else if (e.getActionCommand().equals("myCalculator")) {
-                operation = "calculate";
-                operationSecondPerformed(operation);
+                operationSecondPerformed();
             } else if (e.getActionCommand().equals("mySave")) {
-                operation = "save";
-                operationThirdPerformed(operation);
+                operationThirdPerformed();
             } else if (e.getActionCommand().equals("myLoad")) {
-                operation = "load";
-                operationFourthPerformed(operation);
+                operationFourthPerformed();
             }
         } catch (InvalidInformationException | IOException ex) {
             ex.printStackTrace();
@@ -104,8 +108,8 @@ public class Main extends JFrame implements ActionListener {
     }
 
 
-
-    public void operationFirstPerformed(String operation) {
+    // EFFECTS:  perform this operation when login button be clicked
+    public void operationFirstPerformed() {
         try {
             win2();
             new InfoWin().infoWin(" Your Name is " + vip.getName() + "\n" + "Your Sex is " + vip.getSex());
@@ -116,7 +120,8 @@ public class Main extends JFrame implements ActionListener {
         }
     }
 
-    public void operationSecondPerformed(String operation) {
+    // EFFECTS:  perform this operation when calculate button be clicked
+    public void operationSecondPerformed() {
         try {
             Integer holderAge = Integer.parseInt(ageField.getText());
             double holderWeight = Double.parseDouble(weightField.getText());
@@ -137,7 +142,8 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-    public void operationThirdPerformed(String operation) {
+    // EFFECTS:  perform this operation when save button be clicked
+    public void operationThirdPerformed() {
         try {
             String accountName = nameField.getText();
             String accountHolderSex = sexField.getText();
@@ -156,6 +162,7 @@ public class Main extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: display the load text window for account information
     private void win3() {
         JFrame frame3 = new JFrame("Personal Information");
         JPanel panel3 = new JPanel(true);
@@ -170,7 +177,9 @@ public class Main extends JFrame implements ActionListener {
 
     //原文链接：https://blog.csdn.net/mrliqifeng/article/details/72885486 （CSDN）「李奇峰1998」
 
-    public void operationFourthPerformed(String operation) throws IOException {
+
+    // EFFECTS:  perform this operation when load button be clicked
+    public void operationFourthPerformed() throws IOException {
         try {
             String accountName = nameField.getText();
             FileReader fr = new FileReader("./data/" + accountName + ".txt");
@@ -187,7 +196,8 @@ public class Main extends JFrame implements ActionListener {
     }
 
 
-
+    // EFFECTS: display the second window to collect information for account data
+    //          and the buttons for calculate, save and load.
     public void win2() {
         //frame.setVisible(false);
         JFrame frame2 = new JFrame("Data Collector");
@@ -212,6 +222,7 @@ public class Main extends JFrame implements ActionListener {
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // EFFECTS: add labels and text field on panel2 for the second window
     private void addOnPanel2(JPanel panel) {
         JLabel ageLabel = new JLabel("Age:");
         ageField = new JTextField(10);
@@ -231,6 +242,7 @@ public class Main extends JFrame implements ActionListener {
         panel.add(requireField);
     }
 
+    // EFFECTS: play background music when login button been pressed
     public void playMusic() {
         try {
             FileInputStream fileau = new FileInputStream("./data/" + "backgroundmusic.wav");
