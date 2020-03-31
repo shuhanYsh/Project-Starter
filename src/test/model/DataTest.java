@@ -30,7 +30,7 @@ public class DataTest {
         testData.setHeight(175);
         assertEquals(175 , testData.getHeight());
     }
-
+    
     @Test
     void testSetWeight() {
         testData.setWeight(65);
