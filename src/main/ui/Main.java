@@ -41,7 +41,7 @@ public class Main extends JFrame implements ActionListener {
     // EFFECTS: display the main window which is
     // the login in page
     public Main() {
-        super("The Calories Calculator");
+        super("BM Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400, 300));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
@@ -244,7 +244,7 @@ public class Main extends JFrame implements ActionListener {
     // EFFECTS: play background music when login button been pressed
     public void playMusic() {
         try {
-            FileInputStream fileau = new FileInputStream("./data/" + "backgroundmusic.wav");
+            FileInputStream fileau = new FileInputStream("background for project.wav");
             AudioStream as = new AudioStream(fileau);
             AudioPlayer.player.start(as);
         } catch (Exception e) {
