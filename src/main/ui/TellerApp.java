@@ -1,7 +1,7 @@
 package ui;
 
 import exception.InvalidInformationException;
-import model.AccountManage;
+import model.BMAccount;
 import model.Data;
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ import static java.lang.Integer.parseInt;
 public class TellerApp {
 //    private static final String ACCOUNTS_FILE = "./data/accounts.txt";
     private Scanner input;
-    private AccountManage vip;
+    private BMAccount vip;
 
 
     // EFFECTS: runs the teller application
@@ -148,8 +148,8 @@ public class TellerApp {
             insertInformation();
 //        } else if (command.equals("i")) {
 //            insertFood();
-//        } else if (command.equals("c")) {
-//            calculateCalories();
+        } else if (command.equals("c")) {
+            System.out.println(calculateCalories());
         } else if (command.equals("s")) {
             saveDataToFile("accountData",vip.jsonToString());
         } else if (command.equals("p")) {
@@ -164,7 +164,7 @@ public class TellerApp {
         System.out.println("\nSelect from:");
         System.out.println("\ti -> insertInformation");
 //        System.out.println("\ti -> insertFood");
-//        System.out.println("\tc -> calculateCalories");
+        System.out.println("\tc -> calculateCalories");
         System.out.println("\ts -> save accounts to file");
         System.out.println("\tp -> print to screen");
         System.out.println("\tq -> quit");
@@ -173,7 +173,7 @@ public class TellerApp {
     // MODIFIES: this
     // EFFECTS: initializes accounts
     private void init() throws InvalidInformationException {
-        vip = new AccountManage("", "");
+        vip = new BMAccount("", "");
     }
 
     private void insertInformation() {
@@ -189,6 +189,10 @@ public class TellerApp {
         vip.getData().setWeight(parseDouble(input.nextLine()));
         System.out.println("Enter your needs, add or lose");
         vip.getData().setRequire(input.nextLine());
+    }
+
+    private double calculateCalories() throws IOException {
+        return vip.basalMetabolism();
     }
 
 
@@ -212,13 +216,14 @@ public class TellerApp {
 //    }
 
     // EFFECTS: prompts user to select an account and prints account to screen
-    private void printAccount() throws InvalidInformationException {
+    private void printAccount() throws InvalidInformationException, IOException {
         System.out.println("Account holder: " + vip.getName());
         System.out.println("Account holder's sex: " + vip.getSex());
-        System.out.println(("Account holder's age:" + vip.getData().getAge()));
-        System.out.println(("Account holder's height:" + vip.getData().getHeight()));
-        System.out.println(("Account holder's weight:" + vip.getData().getWeight()));
-        System.out.println(("Account holder's needs:" + vip.getData().getRequire()));
+        System.out.println("Account holder's age:" + vip.getData().getAge());
+        System.out.println("Account holder's height:" + vip.getData().getHeight());
+        System.out.println("Account holder's weight:" + vip.getData().getWeight());
+        System.out.println("Account holder's needs:" + vip.getData().getRequire());
+        System.out.println("Account holder's BM:" + vip.basalMetabolism());
     }
 
 

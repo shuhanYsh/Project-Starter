@@ -1,6 +1,5 @@
 package model;
 
-import exception.InvalidInformationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,21 +8,21 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class AccountManageTest {
-    private AccountManage testAccountManage;
+public class BMAccountTest {
+    private BMAccount testBMAccount;
 
 
     @BeforeEach
     void runBefore(){
-        testAccountManage = new AccountManage("wjp", "m");
-        testAccountManage.getData().setAge(20);
-        testAccountManage.getData().setHeight(175);
-        testAccountManage.getData().setWeight(65);
-        testAccountManage.getData().setRequire("add");
+        testBMAccount = new BMAccount("wjp", "m");
+        testBMAccount.getData().setAge(20);
+        testBMAccount.getData().setHeight(175);
+        testBMAccount.getData().setWeight(65);
+        testBMAccount.getData().setRequire("add");
         Food testFood1 = new Food("apple", 30);
         Food testFood2 = new Food("beef", 107);
-//        testAccountManage.addFood(testFood1, 50);
-//        testAccountManage.addFood(testFood2, 500);
+//        testBMAccount.addFood(testFood1, 50);
+//        testBMAccount.addFood(testFood2, 500);
     }
 
     @Test
@@ -34,7 +33,7 @@ public class AccountManageTest {
     @Test
     void testMaleBasalMetabolism()  {
         try{
-            assertEquals(1695.5,testAccountManage.basalMetabolism());
+            assertEquals(1695.5, testBMAccount.basalMetabolism());
         } catch (IOException e){
             fail("should not throw this exception!");
         }
@@ -43,7 +42,7 @@ public class AccountManageTest {
     @Test
     void testFemaleBasalMetabolism(){
         try{
-            AccountManage testAccountManage2 = new AccountManage("ysh", "f");
+            BMAccount testAccountManage2 = new BMAccount("ysh", "f");
             testAccountManage2.getData().setAge(19);
             testAccountManage2.getData().setHeight(160);
             testAccountManage2.getData().setWeight(53);
@@ -57,7 +56,7 @@ public class AccountManageTest {
     @Test
     void testInvalidSexBasalMetabolism(){
         try{
-            AccountManage testAccountManage2 = new AccountManage("ysh", "s");
+            BMAccount testAccountManage2 = new BMAccount("ysh", "s");
             testAccountManage2.getData().setAge(19);
             testAccountManage2.getData().setHeight(160);
             testAccountManage2.getData().setWeight(53);
@@ -71,25 +70,30 @@ public class AccountManageTest {
 
 //    @Test
 //    void testCountIn() {
-//        assertEquals(550.0, testAccountManage.countIntakeCalories());
+//        assertEquals(550.0, testBMAccount.countIntakeCalories());
 //    }
 //
 //    @Test
 //    void testTotalCal() throws IOException {
-//        assertEquals(-1145.5, testAccountManage.dailyCalories());
+//        assertEquals(-1145.5, testBMAccount.dailyCalories());
 //    }
 
     @Test
-    void testJsonToString(){
-        String s = testAccountManage.jsonToString();
-        assertEquals("{\"needs\":\"add\",\"weight\":65,\"age\":20,\"height\":175}",s);
+    void testJsonToString() throws IOException {
+        String s = testBMAccount.jsonToString();
+        assertEquals("{\"needs\":\"add\",\"sex\":\"m\",\"name\":\"wjp\",\"weight\":65,\"age\":20,\"height\":175}",s);
+    }
+
+    @Test
+    void testGetData() {
+        testBMAccount.getData();
     }
 
     @Test
     void testSetData(){
         Data testData = new Data();
-        testAccountManage.setData(testData);
-        assertEquals(testData, testAccountManage.getData());
+        testBMAccount.setData(testData);
+        assertEquals(testData, testBMAccount.getData());
     }
 
 

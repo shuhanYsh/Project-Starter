@@ -8,7 +8,7 @@ import exception.InvalidInformationException;
 public class Account  {
     public String name;    // the account owner name
     public String sex;     // the account owner physical sex, m for male, f for female
-    public Data accountData; //the data to store additional information of the account owner
+//    public Data accountData; //the data to store additional information of the account owner
 //    public ArrayList<Food> foodArrayList; //the food the owner eat
 //    public ArrayList<FoodIntake> foodIntakeArrayList; //the food the owner eat with quantity
 //    public int totalQuantity;
@@ -23,7 +23,7 @@ public class Account  {
 //        id = nextAccountId++;
         name = accountName;
         sex = accountSex;
-        accountData = new Data();
+//        accountData = new Data();
 //        foodArrayList = new ArrayList<>();
 //        foodIntakeArrayList = new ArrayList<>();
 //        totalQuantity = 0;
@@ -80,10 +80,10 @@ public class Account  {
     }
 
 
-    // EFFECTS: returns the data for the account
-    public Data getData() {
-        return accountData;
-    }
+//    // EFFECTS: returns the data for the account
+//    public Data getData() {
+//        return accountData;
+//    }
 
 
 

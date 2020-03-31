@@ -125,10 +125,10 @@ class AccountTest {
 //        assertEquals(200, testAccount.getTotalQuantityOfFood(testFood2));
 //    }
 
-    @Test
-    void testGetData() {
-        testAccount.getData();
-    }
+//    @Test
+//    void testGetData() {
+//        testAccount.getData();
+//    }
 
 
 

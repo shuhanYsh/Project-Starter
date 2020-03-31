@@ -6,10 +6,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 //Set an account for calculate BM
-public class AccountManage extends Account {
+public class BMAccount extends Account {
+    public Data accountData; //the data to store additional information of the account owner
 
-    public AccountManage(String name, String sex) {
+
+    public BMAccount(String name, String sex) {
         super(name, sex);
+        accountData = new Data();
 
 
     }
@@ -46,7 +49,7 @@ public class AccountManage extends Account {
 //    }
 
     //EFFECTS: modify data in json to string
-    public String jsonToString() {
+    public String jsonToString() throws IOException {
         JSONObject obj = new JSONObject();
         obj.put("name", name);
         obj.put("sex", sex);
@@ -54,9 +57,15 @@ public class AccountManage extends Account {
         obj.put("height", accountData.getHeight());
         obj.put("weight", accountData.getWeight());
         obj.put("needs", accountData.getRequire());
+        obj.put("BM", basalMetabolism());
 
         String data1 = obj.toString();
         return data1;
+    }
+
+    // EFFECTS: returns the data for the account
+    public Data getData() {
+        return accountData;
     }
 
     //EFFECTS: set data to accountData

@@ -7,12 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import model.*;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-import sun.audio.*;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -34,7 +33,7 @@ public class Main extends JFrame implements ActionListener {
     private JTextField heightField;
     private JTextField requireField;
     private String operation;
-    private AccountManage vip;
+    private BMAccount vip;
     private Data vipData;
     private JTextArea jta;
 
@@ -83,7 +82,7 @@ public class Main extends JFrame implements ActionListener {
     public void setAccount() throws InvalidInformationException {
         String accountName = nameField.getText();
         String accountHolderSex = sexField.getText();
-        vip = new AccountManage(accountName, accountHolderSex);
+        vip = new BMAccount(accountName, accountHolderSex);
         vipData = new Data();
         vip.setData(vipData);
     }
