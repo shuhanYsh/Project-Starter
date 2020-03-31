@@ -30,26 +30,28 @@ public class AccountManage extends Account {
         }
     }
 
-    //EFFECTS: calculate food intake calories
-    public double countIntakeCalories() {
-        double sum = 0;
-        for (FoodIntake i : foodIntakeArrayList) {
-            for (Food f : foodArrayList) {
-                int calories = f.getCalories() / 100 * i.getQuantity();
-                sum = sum + calories;
-            }
-        }
-        return sum;
-    }
-
-    //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
-    public double dailyCalories() throws IOException {
-        return countIntakeCalories() - basalMetabolism();
-    }
+//    //EFFECTS: calculate food intake calories
+//    public double countIntakeCalories() {
+//        double sum = 0;
+//        for (FoodIntake i : foodIntakeArrayList) {
+//            for (Food f : foodArrayList) {
+//                int calories = f.getCalories() / 100 * i.getQuantity();
+//                sum = sum + calories;
+//            }
+//        }
+//        return sum;
+//    }
+//
+//    //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
+//    public double dailyCalories() throws IOException {
+//        return countIntakeCalories() - basalMetabolism();
+//    }
 
     //EFFECTS: modify data in json to string
     public String jsonToString() {
         JSONObject obj = new JSONObject();
+        obj.put("name", name);
+        obj.put("sex", sex);
         obj.put("age", accountData.getAge());
         obj.put("height", accountData.getHeight());
         obj.put("weight", accountData.getWeight());

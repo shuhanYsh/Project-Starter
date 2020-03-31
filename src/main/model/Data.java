@@ -1,5 +1,6 @@
 package model;
 
+// Represent the data of the account (collect personal information)
 public class Data {
     public int age;        // the account owner age
     public double weight;  // the account owner weight in kg

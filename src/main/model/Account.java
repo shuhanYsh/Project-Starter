@@ -6,6 +6,7 @@ import exception.InvalidInformationException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+// Represents an account having name, sex and data with personal information
 public class Account  {
     private static int nextAccountId = 1;  // tracks id of next account created
 //    public int id;         // the account id
@@ -72,6 +73,13 @@ public class Account  {
 
     }
 
+    public void modifyName(String newName) {
+        name = newName;
+    }
+
+    public void modifySex(String newSex) {
+        sex = newSex;
+    }
 
 //    public void addFood(Food f) {
 //        foodList.add(f);
@@ -89,33 +97,33 @@ public class Account  {
     // MODIFIES: this
     // EFFECTS: adds food item and quantity to the foodIntakeList, if item has previously been added
     // to this list, quantity of food is increased on previous entry, otherwise adding a new entry
-    public void addFood(Food item, int quantity) {
-        totalQuantity += quantity;
-        if (foodArrayList.contains(item)) {
-            int ind = foodArrayList.indexOf(item);
-            foodIntakeArrayList.get(ind).addQuantity(quantity);
-        } else {
-            foodArrayList.add(item);
-            FoodIntake obj = new FoodIntake(item, quantity);
-            foodIntakeArrayList.add(obj);
-        }
-    }
+//    public void addFood(Food item, int quantity) {
+//        totalQuantity += quantity;
+//        if (foodArrayList.contains(item)) {
+//            int ind = foodArrayList.indexOf(item);
+//            foodIntakeArrayList.get(ind).addQuantity(quantity);
+//        } else {
+//            foodArrayList.add(item);
+//            FoodIntake obj = new FoodIntake(item, quantity);
+//            foodIntakeArrayList.add(obj);
+//        }
+//    }
 
-    // EFFECTS: returns total number of food ate
-    public int getTotalNumberOfFood() {
-        return foodArrayList.size();
-    }
-
-    // EFFECTS: returns total quantity of the food item
-    // returns 0 if the item has not been added to list
-    public int getTotalQuantityOfFood(Food item) {
-        if (foodArrayList.contains(item)) {
-            int ind = foodArrayList.indexOf(item);
-            return foodIntakeArrayList.get(ind).getQuantity();
-        } else {
-            return 0;
-        }
-    }
+//    // EFFECTS: returns total number of food ate
+//    public int getTotalNumberOfFood() {
+//        return foodArrayList.size();
+//    }
+//
+//    // EFFECTS: returns total quantity of the food item
+//    // returns 0 if the item has not been added to list
+//    public int getTotalQuantityOfFood(Food item) {
+//        if (foodArrayList.contains(item)) {
+//            int ind = foodArrayList.indexOf(item);
+//            return foodIntakeArrayList.get(ind).getQuantity();
+//        } else {
+//            return 0;
+//        }
+//    }
 
     // EFFECTS: returns the data for the account
     public Data getData() {
