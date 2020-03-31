@@ -81,13 +81,7 @@ public class Account  {
         sex = newSex;
     }
 
-//    public void addFood(Food f) {
-//        foodList.add(f);
-//    }
-//
-//    public void removeFood(Food f) {
-//        foodList.remove(f);
-//    }
+
 
 
 
