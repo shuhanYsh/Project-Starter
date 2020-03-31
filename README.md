@@ -44,7 +44,13 @@ You can reload your information by clicking load, if the person has not been sav
 - Change name of class AccountManage to BMAccount, which is more appropriate for the function of this class. 
 - Move Data to from Account to BMAccount for cohesion. Account just contain name and sex. 
 - Add the BM calculator in TellerApp, which can also calculate BM in intellij command window.
+- Robust the design of TellerApp by adding throw and catch exception. 
 
 ## Regrade for phase1 
 
 You can run project and check at command window, the file for saving named "accountData" in data package. 
+
+## Regrade for phase3
+
+I wonder if I can get regrade for phase 3 task for adding music, since I finished in phase 3 but I didn't know I have 
+to push the music document separately on git hub. 

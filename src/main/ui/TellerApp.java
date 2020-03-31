@@ -1,5 +1,6 @@
 package ui;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import exception.InvalidInformationException;
 import model.BMAccount;
 import model.Data;
@@ -17,6 +18,7 @@ public class TellerApp {
 //    private static final String ACCOUNTS_FILE = "./data/accounts.txt";
     private Scanner input;
     private BMAccount vip;
+    private double value;
 
 
     // EFFECTS: runs the teller application
@@ -143,19 +145,23 @@ public class TellerApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processCommand(String command) throws IOException, InvalidInformationException {
-        if (command.equals("i")) {
-            insertInformation();
-//        } else if (command.equals("i")) {
-//            insertFood();
-        } else if (command.equals("c")) {
-            System.out.println(calculateCalories());
-        } else if (command.equals("s")) {
-            saveDataToFile("accountData",vip.jsonToString());
-        } else if (command.equals("p")) {
-            printAccount();
-        }  else {
-            System.out.println("Selection not valid...");
+    private void processCommand(String command) {
+        try {
+            if (command.equals("i")) {
+                insertInformation();
+            } else if (command.equals("c")) {
+                System.out.println(calculateBM());
+            } else if (command.equals("s")) {
+                saveDataToFile("accountData",vip.jsonToString());
+            } else if (command.equals("p")) {
+                printAccount();
+            }  else {
+                System.out.println("Selection not valid...");
+            }
+        } catch (IOException e) {
+            System.out.println("Please insert valid information!");
+        } catch (NullPointerException | NumberFormatException e) {
+            System.out.println("Please fill out the information!");
         }
     }
 
@@ -164,7 +170,7 @@ public class TellerApp {
         System.out.println("\nSelect from:");
         System.out.println("\ti -> insertInformation");
 //        System.out.println("\ti -> insertFood");
-        System.out.println("\tc -> calculateCalories");
+        System.out.println("\tc -> calculateBM");
         System.out.println("\ts -> save accounts to file");
         System.out.println("\tp -> print to screen");
         System.out.println("\tq -> quit");
@@ -176,54 +182,53 @@ public class TellerApp {
         vip = new BMAccount("", "");
     }
 
+    // EFFECTS: collect insert information
     private void insertInformation() {
-        System.out.println("Enter your name :");
-        vip.modifyName(input.nextLine());
-        System.out.println("Enter your sex :");
-        vip.modifySex(input.nextLine());
-        System.out.println("Enter your age :");
-        vip.getData().setAge(parseInt(input.nextLine()));
-        System.out.println("Enter your height");
-        vip.getData().setHeight(parseDouble(input.nextLine()));
-        System.out.println("Enter your weight");
-        vip.getData().setWeight(parseDouble(input.nextLine()));
-        System.out.println("Enter your needs, add or lose");
-        vip.getData().setRequire(input.nextLine());
+        try {
+            System.out.println("Enter your name :");
+            vip.modifyName(input.nextLine());
+            System.out.println("Enter your sex :");
+            vip.modifySex(input.nextLine());
+            System.out.println("Enter your age :");
+            vip.getData().setAge(parseInt(input.nextLine()));
+            System.out.println("Enter your height");
+            vip.getData().setHeight(parseDouble(input.nextLine()));
+            System.out.println("Enter your weight");
+            vip.getData().setWeight(parseDouble(input.nextLine()));
+            System.out.println("Enter your needs, add or lose");
+            vip.getData().setRequire(input.nextLine());
+        } catch (NullPointerException | NumberFormatException e) {
+            System.out.println("Please fill out the information!");
+        }
     }
 
-    private double calculateCalories() throws IOException {
-        return vip.basalMetabolism();
+    // EFFECTS: calculate BM value by using insert information
+    private double calculateBM() {
+        try {
+            value = vip.basalMetabolism();
+        } catch (IOException e) {
+            System.out.println("Invalid Sex!");
+        }
+        return value;
     }
 
 
-//    private void insertFood() {
-//        Food newFood = new Food("", 0);
-//        System.out.println("Enter the food you ate :");
-//        newFood.setName(input.nextLine());
-//        System.out.println("Enter the cal of the food:");
-//        newFood.setCalories(parseInt(input.nextLine()));
-//        System.out.println("Enter the quantity of the food");
-//        vip.addFood(newFood, parseInt(input.nextLine()));
-//    }
-//
-//    private void calculateCalories() throws InvalidInformationException, IOException {
-//        System.out.println("calculate basalMetabolism :");
-//        System.out.println(vip.basalMetabolism());
-//        System.out.println("calculate intakeCalories :");
-//        System.out.println(vip.countIntakeCalories());
-//        System.out.println("total calories :");
-//        System.out.println(vip.dailyCalories());
-//    }
 
     // EFFECTS: prompts user to select an account and prints account to screen
-    private void printAccount() throws InvalidInformationException, IOException {
-        System.out.println("Account holder: " + vip.getName());
-        System.out.println("Account holder's sex: " + vip.getSex());
-        System.out.println("Account holder's age:" + vip.getData().getAge());
-        System.out.println("Account holder's height:" + vip.getData().getHeight());
-        System.out.println("Account holder's weight:" + vip.getData().getWeight());
-        System.out.println("Account holder's needs:" + vip.getData().getRequire());
-        System.out.println("Account holder's BM:" + vip.basalMetabolism());
+    private void printAccount() {
+        try {
+            System.out.println("Account holder: " + vip.getName());
+            System.out.println("Account holder's sex: " + vip.getSex());
+            System.out.println("Account holder's age:" + vip.getData().getAge());
+            System.out.println("Account holder's height:" + vip.getData().getHeight());
+            System.out.println("Account holder's weight:" + vip.getData().getWeight());
+            System.out.println("Account holder's needs:" + vip.getData().getRequire());
+            System.out.println("Account holder's BM:" + vip.basalMetabolism());
+        } catch (NullPointerException e) {
+            System.out.println("Please fill out the information!");
+        } catch (InvalidInformationException | IOException e) {
+            System.out.println("Please insert valid information!");
+        }
     }
 
 

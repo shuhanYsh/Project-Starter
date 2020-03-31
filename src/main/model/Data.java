@@ -7,6 +7,7 @@ public class Data {
     public double height;  // the account owner height in cm
     public String require; // the account owner needs, add or lose weight
 
+//    set initial value for data
     public Data() {
         this.age = 0;
         this.weight = 0.0;
@@ -40,39 +41,38 @@ public class Data {
 
     // EFFECT: return account owner name
     public int getAge() {
-//        if (!"".equals(age)) {
-//
-//        }
-//        } else {
-//            throw new NumberFormatException("Please insert your age!");
-        return age;
+        if (!"".equals(age)) {
+            return age;
+        } else {
+            throw new NumberFormatException("Please insert your age!");
+        }
     }
 
     // EFFECT: return account owner weight
     public double getWeight() {
-//        if (!"".equals(weight)) {
-        return weight;
-//        } else {
-//            throw new NullPointerException("Please insert your weight!");
-//        }
+        if (!"".equals(weight)) {
+            return weight;
+        } else {
+            throw new NullPointerException("Please insert your weight!");
+        }
     }
 
     // EFFECT: return account owner height
     public double getHeight() {
-//        if (!"".equals(height)) {
-        return height;
-//        } else {
-//            throw new NullPointerException("Please insert your height!");
-//        }
+        if (!"".equals(height)) {
+            return height;
+        } else {
+            throw new NullPointerException("Please insert your height!");
+        }
     }
 
     // EFFECT: return account owner needs
     public String getRequire() {
-//        if (require != null && !"".equals(require)) {
-        return require;
-//        } else {
-//            throw new NullPointerException("Please insert your personal needs!");
-//        }
+        if (require != null && !"".equals(require)) {
+            return require;
+        } else {
+            throw new NullPointerException("Please insert your personal needs!");
+        }
     }
 
 }

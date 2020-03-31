@@ -5,16 +5,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-//Set an account for calculate BM
+//Set an account to calculate BM
 public class BMAccount extends Account {
     public Data accountData; //the data to store additional information of the account owner
 
-
+    //      EFFECTS: name on account is set to accountName;
+//              sex of the account owner is set to accountSex
     public BMAccount(String name, String sex) {
         super(name, sex);
         accountData = new Data();
-
-
     }
 
     //REQUIRES: sex have to be string "f" or "m"
@@ -31,22 +30,6 @@ public class BMAccount extends Account {
         }
     }
 
-//    //EFFECTS: calculate food intake calories
-//    public double countIntakeCalories() {
-//        double sum = 0;
-//        for (FoodIntake i : foodIntakeArrayList) {
-//            for (Food f : foodArrayList) {
-//                int calories = f.getCalories() / 100 * i.getQuantity();
-//                sum = sum + calories;
-//            }
-//        }
-//        return sum;
-//    }
-//
-//    //EFFECTS: calculate daily calories by basalMetabolism and food intake calories
-//    public double dailyCalories() throws IOException {
-//        return countIntakeCalories() - basalMetabolism();
-//    }
 
     //EFFECTS: modify data in json to string
     public String jsonToString() throws IOException {

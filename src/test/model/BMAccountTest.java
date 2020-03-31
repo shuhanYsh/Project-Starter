@@ -19,10 +19,7 @@ public class BMAccountTest {
         testBMAccount.getData().setHeight(175);
         testBMAccount.getData().setWeight(65);
         testBMAccount.getData().setRequire("add");
-        Food testFood1 = new Food("apple", 30);
-        Food testFood2 = new Food("beef", 107);
-//        testBMAccount.addFood(testFood1, 50);
-//        testBMAccount.addFood(testFood2, 500);
+
     }
 
     @Test
@@ -68,20 +65,12 @@ public class BMAccountTest {
         }
     }
 
-//    @Test
-//    void testCountIn() {
-//        assertEquals(550.0, testBMAccount.countIntakeCalories());
-//    }
-//
-//    @Test
-//    void testTotalCal() throws IOException {
-//        assertEquals(-1145.5, testBMAccount.dailyCalories());
-//    }
 
     @Test
     void testJsonToString() throws IOException {
         String s = testBMAccount.jsonToString();
-        assertEquals("{\"needs\":\"add\",\"sex\":\"m\",\"name\":\"wjp\",\"weight\":65,\"age\":20,\"height\":175}",s);
+        assertEquals("{\"needs\":\"add\",\"sex\":\"m\",\"name\":\"wjp\",\"weight\":65,\"BM\":1695.5,\"age\":20," +
+                "\"height\":175}",s);
     }
 
     @Test
