@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.*;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 //import sun.audio.AudioData;
 //import sun.audio.AudioPlayer;
 //import sun.audio.AudioStream;
@@ -95,7 +97,7 @@ public class Main extends JFrame implements ActionListener {
             if (e.getActionCommand().equals("myLogin")) {
                 setAccount();
                 operationFirstPerformed();
-//                playMusic();
+                playMusic();
             } else if (e.getActionCommand().equals("myCalculator")) {
                 operationSecondPerformed();
             } else if (e.getActionCommand().equals("mySave")) {
@@ -243,16 +245,16 @@ public class Main extends JFrame implements ActionListener {
         panel.add(requireField);
     }
 
-//    // EFFECTS: play background music when login button been pressed
-//    public void playMusic() {
-//        try {
-//            FileInputStream fileau = new FileInputStream("background for project.wav");
-//            AudioStream as = new AudioStream(fileau);
-//            AudioPlayer.player.start(as);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // EFFECTS: play background music when login button been pressed
+    public void playMusic() {
+        try {
+            FileInputStream fileau = new FileInputStream("background for project.wav");
+            AudioStream as = new AudioStream(fileau);
+            AudioPlayer.player.start(as);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 //    public static void playMusic() {
 //        AudioPlayer player = AudioPlayer.player;
