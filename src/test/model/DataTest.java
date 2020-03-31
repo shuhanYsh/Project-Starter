@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class DataTest {
     private Data testData;
@@ -23,7 +24,6 @@ public class DataTest {
         testData.setAge(20);
         assertEquals(20 , testData.getAge());
     }
-
 
     @Test
     void testSetHeight() {

@@ -41,38 +41,38 @@ public class Data {
 
     // EFFECT: return account owner name
     public int getAge() {
-        if (!"".equals(age)) {
-            return age;
-        } else {
-            throw new NumberFormatException("Please insert your age!");
-        }
+//        if (!"".equals(age)) {
+        return age;
+//        } else {
+//            throw new NumberFormatException("Please insert your age!");
+//        }
     }
 
     // EFFECT: return account owner weight
     public double getWeight() {
-        if (!"".equals(weight)) {
-            return weight;
-        } else {
-            throw new NullPointerException("Please insert your weight!");
-        }
+//        if (!"".equals(weight)) {
+        return weight;
+//        } else {
+//            throw new NullPointerException("Please insert your weight!");
+//        }
     }
 
     // EFFECT: return account owner height
     public double getHeight() {
-        if (!"".equals(height)) {
-            return height;
-        } else {
-            throw new NullPointerException("Please insert your height!");
-        }
+//        if (!"".equals(height)) {
+        return height;
+//        } else {
+//            throw new NullPointerException("Please insert your height!");
+//        }
     }
 
     // EFFECT: return account owner needs
     public String getRequire() {
-        if (require != null && !"".equals(require)) {
-            return require;
-        } else {
-            throw new NullPointerException("Please insert your personal needs!");
-        }
+//        if (require != null && !"".equals(require)) {
+        return require;
+//        } else {
+//            throw new NullPointerException("Please insert your personal needs!");
+//        }
     }
 
 }
