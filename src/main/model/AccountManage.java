@@ -1,13 +1,11 @@
 package model;
 
 
-
-import exception.InvalidInformationException;
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+//Set an account for calculate BM
 public class AccountManage extends Account {
 
     public AccountManage(String name, String sex) {

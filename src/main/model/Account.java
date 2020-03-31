@@ -3,19 +3,15 @@ package model;
 
 import exception.InvalidInformationException;
 
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 // Represents an account having name, sex and data with personal information
 public class Account  {
-    private static int nextAccountId = 1;  // tracks id of next account created
-//    public int id;         // the account id
     public String name;    // the account owner name
     public String sex;     // the account owner physical sex, m for male, f for female
     public Data accountData; //the data to store additional information of the account owner
-    public ArrayList<Food> foodArrayList; //the food the owner eat
-    public ArrayList<FoodIntake> foodIntakeArrayList; //the food the owner eat with quantity
-    public int totalQuantity;
+//    public ArrayList<Food> foodArrayList; //the food the owner eat
+//    public ArrayList<FoodIntake> foodIntakeArrayList; //the food the owner eat with quantity
+//    public int totalQuantity;
 
     /*
      * REQUIRES: accountName has a non-zero length
@@ -27,10 +23,10 @@ public class Account  {
 //        id = nextAccountId++;
         name = accountName;
         sex = accountSex;
-        totalQuantity = 0;
         accountData = new Data();
-        foodArrayList = new ArrayList<>();
-        foodIntakeArrayList = new ArrayList<>();
+//        foodArrayList = new ArrayList<>();
+//        foodIntakeArrayList = new ArrayList<>();
+//        totalQuantity = 0;
     }
 
 //    /*
@@ -73,15 +69,21 @@ public class Account  {
 
     }
 
+    // EFFECT: modify account name
     public void modifyName(String newName) {
         name = newName;
     }
 
+    // EFFECT: modify account sex
     public void modifySex(String newSex) {
         sex = newSex;
     }
 
 
+    // EFFECTS: returns the data for the account
+    public Data getData() {
+        return accountData;
+    }
 
 
 
@@ -119,10 +121,7 @@ public class Account  {
 //        }
 //    }
 
-    // EFFECTS: returns the data for the account
-    public Data getData() {
-        return accountData;
-    }
+
 
 
 }

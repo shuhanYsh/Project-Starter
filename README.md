@@ -24,7 +24,7 @@ As a user, I want to be able to add my personal information to data of account.
 As a user, I want to be able to save my account information to a file  
 As a user, I want to be able to optionally load  my information from data file.  
 
-# Instructions for Grader
+## Instructions for Grader
 
 You can generate the first required event by inserting your name and sex ("f" for female, "m" for male) and press login button.  
 You can generate the second required event by inserting your age, weight, height, and require ("add" weight or "lose") and 
@@ -32,3 +32,11 @@ press calculate button to calculate your basal metabolism.
 You can trigger my audio component by pressing login button.  
 You can save the file of your name by pressing save button and check the file in data (your name).txt file.  
 You can reload your information by clicking load, if the person has not been saved, the system will remind you to save first.
+
+## Phase4 Task2
+
+- Account class getName and getSex method have a robust design. 
+- AccountManage class basalMetabolism method has a robust design. 
+- AccountManage extend Account class.
+
+
